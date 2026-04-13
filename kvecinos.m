@@ -12,7 +12,6 @@ function [MD_kvecinos, Y] = kvecinos(MD)
     for i = 1:length(row)  %inicia un bucle que itera sobre cada valor perdido en la matriz (NaN)
         idx = knnsearch(MD(:, column~=col(i)),MD(row(i), column~=col(i)),'k', k+1);  
         % Usa la función 'knnsearch' para buscar los k+1 vecinos más cercanos.
-        % idx nos da los indices de las filas de los k=5 vecinos mas cercanos
         % 'MD(:, column~=col(i))' selecciona todas las columnas excepto la que tiene el NaN actual (col(i)).
         % 'MD(row(i), column~=col(i))' selecciona las características de la fila que contiene el NaN, excluyendo la columna con NaN.
         % 'k+1' se usa para evitar que la fila que tiene el NaN sea considerada en el grupo de vecinos más cercanos, ya que podría estar incluida en su propia búsqueda.
